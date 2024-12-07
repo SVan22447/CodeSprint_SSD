@@ -19,14 +19,7 @@
       "rotate": 180,
       "attrs": {}
     },
-    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -123.69, "left": -253.84, "attrs": {} },
-    {
-      "type": "wokwi-rgb-led",
-      "id": "rgb1",
-      "top": -15.2,
-      "left": 58.16,
-      "attrs": { "common": "cathode" }
-    }
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -123.69, "left": -253.84, "attrs": {} }
   ],
   "connections": [
     [ "esp:TX0", "$serialMonitor:RX", "", [] ],
@@ -41,11 +34,7 @@
     [ "ultrasonic1:ECHO", "esp:D12", "blue", [ "v0" ] ],
     [ "servo1:GND", "esp:GND.2", "black", [ "h0" ] ],
     [ "servo1:V+", "esp:VIN", "red", [ "h75.1", "v21.69", "h103.33" ] ],
-    [ "servo1:PWM", "esp:D14", "#8f4814", [ "h53.1", "v-13.48" ] ],
-    [ "rgb1:COM", "esp:GND.1", "black", [ "v0" ] ],
-    [ "rgb1:R", "esp:D4", "red", [ "v0" ] ],
-    [ "rgb1:G", "esp:D2", "green", [ "v0" ] ],
-    [ "rgb1:B", "esp:D15", "blue", [ "v0" ] ]
+    [ "servo1:PWM", "esp:D14", "#8f4814", [ "h53.1", "v-13.48" ] ]
   ],
   "dependencies": {}
 }
