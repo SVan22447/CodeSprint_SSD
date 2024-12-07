@@ -4,3 +4,7 @@
 # Automatically added based on includes:
 Adafruit GFX Library
 
+Adafruit GFX Library
+Adafruit SSD1306
+ArduinoJson
+ESP Mail Client
