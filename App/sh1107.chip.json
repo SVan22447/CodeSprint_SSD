@@ -1,0 +1,14 @@
+{
+    "name": "SH1107",
+    "author": "Uri Shaked",
+    "pins": [
+      "SCL",
+      "SDA",
+      "GND",
+      "VCC"
+    ],
+    "display": {
+      "width": 128,
+      "height": 128
+    }
+  }
