@@ -1,29 +1,27 @@
 {
   "version": 1,
-  "author": "Anonymous maker",
+  "author": "SSD Squad",
   "editor": "wokwi",
   "parts": [
+    { "type": "board-esp32-c3-devkitm-1", "id": "esp", "top": -0.3, "left": -3.78, "attrs": {} },
+    { "type": "chip-display", "id": "chip1", "top": -104.58, "left": 158.4, "attrs": {} },
     {
-      "type": "board-esp32-devkit-c-v4",
-      "id": "esp",
-      "top": 285.2,
-      "left": 5.36,
-      "rotate": 180,
-      "attrs": {}
-    },
-    {
-      "type": "board-grove-oled-sh1107",
-      "id": "oled3",
-      "top": 191.77,
-      "left": -217.7,
+      "type": "wokwi-biaxial-stepper",
+      "id": "stepper1",
+      "top": -147.64,
+      "left": -477,
       "attrs": {}
     }
   ],
   "connections": [
-    [ "oled3:GND.1", "esp:GND.1", "black", [ "h19.2", "v-105.6", "h163.2", "v105.6" ] ],
-    [ "oled3:VCC", "esp:3V3", "red", [ "h28.8", "v-105.6", "h144", "v220.8" ] ],
-    [ "oled3:SDA", "esp:21", "blue", [ "h19.2", "v105.6" ] ],
-    [ "oled3:SCL.1", "esp:22", "green", [ "h9.6", "v124.8" ] ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "chip1:GND", "black", [ "v0" ] ],
+    [ "esp:3V3.1", "chip1:VCC", "green", [ "h-13.38", "v-278.7" ] ],
+    [ "esp:4", "chip1:SCK", "green", [ "v0" ] ],
+    [ "esp:10", "chip1:CS", "green", [ "v-393.9", "h447.42" ] ],
+    [ "esp:6", "chip1:MOSI", "green", [ "h13", "v-393.9", "h345.6" ] ],
+    [ "chip1:MISO", "esp:5", "green", [ "v-76.8", "h-336.36" ] ]
   ],
   "dependencies": {}
 }

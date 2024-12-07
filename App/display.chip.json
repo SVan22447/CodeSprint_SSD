@@ -1,0 +1,17 @@
+{
+  "name": "display",
+  "author": "SSD Squad",
+  "pins": [
+    "VCC",
+    "GND",
+    "SCK",
+    "MISO",
+    "MOSI",
+    "CS"
+  ],
+  "controls": [],
+  "display": {
+    "width": 300,
+    "height": 400
+  }
+}
