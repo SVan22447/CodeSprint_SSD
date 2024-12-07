@@ -9,7 +9,7 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 QRCode qrcode;
-String paypalLink = "https://paypal.me/username"; //insert your paypal link from here
+String TestLink = "https://youtu.be/dQw4w9WgXcQ?si=dyGIne3IyU0e8HT0"; //insert your paypal link from here
 
 
 void setup()
@@ -32,7 +32,7 @@ void showScantoPay(void) {
   display.setTextSize(2); // Change the font size to 2
   display.setTextColor(WHITE);
   uint8_t qrcodeData[qrcode_getBufferSize(3)];
-  qrcode_initText(&qrcode, qrcodeData, 3, 0, paypalLink.c_str() );
+  qrcode_initText(&qrcode, qrcodeData, 3, 0, TestLink.c_str() );
 
   int scale = 2; // Change this for different sizes
 

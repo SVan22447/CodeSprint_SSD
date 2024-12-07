@@ -14,13 +14,19 @@
     {
       "type": "wokwi-servo",
       "id": "servo1",
-      "top": 95.21,
-      "left": -452.93,
+      "top": 93.2,
+      "left": -448.4,
       "rotate": 180,
       "attrs": {}
     },
     { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -123.69, "left": -253.84, "attrs": {} },
-    { "type": "wokwi-rgb-led", "id": "rgb1", "top": -15.2, "left": 58.16, "attrs": {"common":"cathode"} }
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": -15.2,
+      "left": 58.16,
+      "attrs": { "common": "cathode" }
+    }
   ],
   "connections": [
     [ "esp:TX0", "$serialMonitor:RX", "", [] ],
