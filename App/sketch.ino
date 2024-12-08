@@ -62,9 +62,7 @@ void loop() {
 void CloseOpen(void){
   if(opened){
     servo.write(90);
-    Serial.println("Open");
   }else{
     servo.write(0);
-    Serial.println("Close");
   }
 }
