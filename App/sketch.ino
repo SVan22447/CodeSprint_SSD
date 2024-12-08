@@ -1,59 +1,70 @@
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include "qrcode.h"
+#include <Arduino.h>
+#include <ESP32Servo.h>
+#include <qrcodeoled.h>
+#include <SSD1306.h>
+#include "WiFi.h"
 
-#define SCREEN_WIDTH 128 // OLED display width
-#define SCREEN_HEIGHT 64 // OLED display height
-#define OLED_RESET -1    // Reset pin # (or -1 if sharing Arduino reset pin)
+/* *********************************************************************************
+ *        QRcode
+ * dependency library :
+ *   ESP8266 Oled Driver for SSD1306 display by Daniel Eichborn, Fabrice Weinberg
+ *
+ * SDA --> D6
+ * SCL --> D7
+***********************************************************************************/
+#define OLEDDISPLAY
 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-QRCode qrcode;
-String TestLink = "https://youtu.be/dQw4w9WgXcQ?si=dyGIne3IyU0e8HT0"; //insert your paypal link from here
 
+SSD1306  display(0x3c, 21, 22); // Only change
+Servo servo;
+QRcodeOled qrcode (&display);
+const char* ssid = "Wokwi-GUEST";  
+const char* pwd = "";
+Servo arm; // Create a "Servo" object called "arm"
+float pos = 0.0;
+String TestLink = "https://youtu.be/dQw4w9WgXcQ?si=dyGIne3IyU0e8HT0"; 
+bool opened=false;
+// const char* ssid = "user2";  
+// const char* pwd = "22222222";
 
-void setup()
-{
+void setup() {
+  servo.attach(25,500, 2400);
   Serial.begin(115200);
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-    Serial.println(F("SSD1306 allocation failed"));
-    for (;;);
+  Serial.println("");
+  // Serial.println("Starting...");
+   Serial.print("Connecting to WiFi");
+  WiFi.begin(ssid, pwd, 6);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(100);
+    Serial.print(".");
   }
-  showScantoPay();
-}
-
-void loop()
-{
-
-}
-
-void showScantoPay(void) {
-  display.clearDisplay();
-  display.setTextSize(2); // Change the font size to 2
-  display.setTextColor(WHITE);
-  uint8_t qrcodeData[qrcode_getBufferSize(3)];
-  qrcode_initText(&qrcode, qrcodeData, 3, 0, TestLink.c_str() );
-
-  int scale = 2; // Change this for different sizes
-
-  for (uint8_t y = 0; y < qrcode.size; y++)
-  {
-    for (uint8_t x = 0; x < qrcode.size; x++)
-    {
-      if (qrcode_getModule(&qrcode, x, y))
-      {
-        display.fillRect(x * scale, y * scale, scale, scale, WHITE);
-      }
-    }
-  }
-
-  // Add the text "Scan to open the barrier"
-  display.setCursor(65, 5); // Adjust the position as needed
-  display.println("Scan");
-  display.setCursor(65, 25); // Adjust the position as needed
-  display.println("to");
-  display.setCursor(65, 45); // Adjust the position as needed
-  display.println("Open.");
-
+  Serial.println(" Connected!");
+  display.init();
+  display.clear();
   display.display();
+    Serial.println("clear...");
+
+  // enable debug qrcode
+  qrcode.debug();
+
+  // Initialize QRcode display using library
+  qrcode.init();
+    Serial.println("init qr lib...");
+  // create qrcode
+  qrcode.create(TestLink);
+  Serial.println("...");
+}
+
+void loop() {
+  CloseOpen();
+  delay(1000);
+}
+void CloseOpen(void){
+  if(opened){
+    servo.write(90);
+    Serial.println("Open");
+  }else{
+    servo.write(0);
+    Serial.println("Close");
+  }
 }
