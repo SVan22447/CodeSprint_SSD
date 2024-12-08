@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Все QR-коды</title>
+</head>
+<body>
+    <h1>Все QR-коды</h1>
+    <ul>
+        {% for qr in qr_codes %}
+            <li>{{ qr.data }} - {{ qr.timestamp }} 
+                <a href="{% url 'delete_qr_code' qr.pk %}">Удалить</a></li>
+        {% empty %}
+            <li>Нет данных в базе.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}">Назад</a>
+</body>
+</html>

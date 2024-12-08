@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить QR Код</title>
+    
+</head>
+<body>
+    <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
+    <h1>Сканировать QR Код</h1>
+    <div id="reader" style="width: 400px;"></div>
+
+
+    <input type="hidden" id="qr_data" name="qr_data" value="">
+    <button id="submitBtn">Добавить QR Код</button>
+
+    <script>
+        function onScanSuccess(qrCodeMessage) {
+            // Устанавливаем данные QR-кода в скрытое поле
+            document.getElementById('qr_data').value = qrCodeMessage;
+            alert("QR Код считан: " + qrCodeMessage);
+            // Останавливаем сканирование после успешного считывания
+            html5QrcodeScanner.clear();
+        }
+
+        function onScanError(errorMessage) {
+            // Обработка ошибок сканирования
+            console.warn("Ошибка при сканировании: ", errorMessage);
+        }
+
+        const html5QrcodeScanner = new Html5Qrcode("reader");
+        html5QrcodeScanner.start(
+            { facingMode: "environment" }, // Используем заднюю камеру
+            {
+                fps: 10,
+                qrbox: 250 // Размер области для сканирования
+            },
+            onScanSuccess,
+            onScanError)
+        .catch(err => {
+            console.error("Ошибка при запуске сканера: ", err);
+        });
+
+        document.getElementById('submitBtn').onclick = function() {
+            // Отправляем форму с данными QR-кода
+            const qrData = document.getElementById('qr_data').value;
+            if (qrData) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = "{% url 'add_qr_code' %}"; // URL для отправки данных
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = 'csrfmiddlewaretoken';
+                csrfInput.value = '{{ csrf_token }}'; // CSRF токен
+                form.appendChild(csrfInput);
+                
+                const qrInput = document.createElement('input');
+                qrInput.type = 'hidden';
+                qrInput.name = 'qr_data';
+                qrInput.value = qrData;
+                form.appendChild(qrInput);
+                
+                document.body.appendChild(form);
+                form.submit();
+            } else {
+                alert("Пожалуйста, отсканируйте QR код.");
+            }
+        };
+    </script>
+</body>
+</html>
