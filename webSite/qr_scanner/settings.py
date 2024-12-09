@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+TIME_ZONE = 'UTC'  # Сохраняем время в UTC
+USE_TZ = True      # Включаем поддержку временных зон
 
 # Application definition
 

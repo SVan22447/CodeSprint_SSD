@@ -5,8 +5,8 @@
     <title>Все QR-коды</title>
     <style>
         body {
+            background-image: url('https://marketplace.canva.com/EAFSAsQmQeg/1/0/1600w/canva-orange-illustrated-cute-christmas-house-desktop-wallpaper-IscQ9unhXnA.jpg');
             font-family: Arial, sans-serif; /* Шрифт для всего документа */
-            background-color: #f9f9f9; /* Цвет фона */
             margin: 0; /* Убираем отступы */
             padding: 20px; /* Отступы внутри тела */
             display: flex; /* Используем flexbox для центрирования */
@@ -44,12 +44,21 @@
         }
 
         .back-link {
-            margin-top: 20px; /* Отступ сверху */
-            color: #3498db; /* Цвет ссылки "Назад" */
+            font-family: 'Muli';
+            background-color: transparent; /* Прозрачный фон */
+            color: rgb(37, 37, 37); /* Цвет текста кнопки */
+            border: 2px solid rgb(0, 0, 0); /* Рамка кнопки */
+            border-radius: 5px; /* Закругленные углы */
+            padding: 10px 20px; /* Увеличиваем отступы внутри кнопки */
+            margin: 5px; /* Отступы между кнопками */
+            text-decoration: none; /* Убираем подчеркивание */
+            cursor: pointer; /* Указатель при наведении */
+            transition: background-color 0.3s, color 0.3s; /* Плавный переход для фона и цвета */
         }
 
         .back-link:hover {
-            text-decoration: underline; /* Подчеркивание при наведении на ссылку "Назад" */
+            background-color: rgb(120, 219, 138); /* Фон при наведении */
+            color: rgb(175, 92, 33); /* Цвет текста при наведении */
         }
     </style>
 </head>
