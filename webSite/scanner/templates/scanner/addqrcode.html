@@ -5,13 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Добавить QR Код</title>
-    
+    <style>
+        body {
+            background-image: url('https://images.wallpaperscraft.ru/image/single/poverhnost_temnyj_fon_50614_1920x1200.jpg');
+            display: flex; /* Используем flexbox для центрирования */
+            flex-direction: column; /* Вертикальное выравнивание */
+            justify-content: center; /* Центрирование по вертикали */
+            align-items: center; /* Центрирование по горизонтали */
+            height: 100vh; /* Высота на весь экран */
+            margin: 0; /* Убираем отступы */
+            background-color: #f0f0f0; /* Цвет фона */
+        }
+
+        h1 {
+            margin-bottom: 20px; /* Отступ между заголовком и следующим элементом */
+        }
+
+        #reader {
+            width: 400px; /* Ширина области для сканирования */
+            height: auto; /* Автоматическая высота */
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+
+        button {
+            padding: 10px 20px; /* Отступы внутри кнопки */
+            background-color: #4CAF50; /* Цвет фона кнопки */
+            color: white; /* Цвет текста кнопки */
+            border: none; /* Без рамки */
+            border-radius: 5px; /* Закругленные углы */
+            cursor: pointer; /* Указатель при наведении */
+            transition: background-color 0.3s; /* Плавный переход для фона */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Цвет фона при наведении */
+        }
+    </style>
 </head>
+
 <body>
     <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
     <h1>Сканировать QR Код</h1>
-    <div id="reader" style="width: 400px;"></div>
-
+    <div id="reader"></div>
 
     <input type="hidden" id="qr_data" name="qr_data" value="">
     <button id="submitBtn">Добавить QR Код</button>
@@ -70,4 +105,5 @@
         };
     </script>
 </body>
+
 </html>

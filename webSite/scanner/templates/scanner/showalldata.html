@@ -3,6 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Все QR-коды</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Шрифт для всего документа */
+            background-color: #f9f9f9; /* Цвет фона */
+            margin: 0; /* Убираем отступы */
+            padding: 20px; /* Отступы внутри тела */
+            display: flex; /* Используем flexbox для центрирования */
+            flex-direction: column; /* Вертикальное направление */
+            align-items: center; /* Центрируем по горизонтали */
+            justify-content: center; /* Центрируем по вертикали */
+            height: 100vh; /* Высота на весь экран */
+        }
+
+        h1 {
+            color: #333; /* Цвет текста заголовка */
+        }
+
+        ul {
+            list-style-type: none; /* Убираем маркеры списка */
+            padding: 0; /* Убираем отступы у списка */
+            text-align: center; /* Центрируем текст в списке */
+        }
+
+        li {
+            background-color: #fff; /* Цвет фона элемента списка */
+            border: 1px solid #ddd; /* Рамка вокруг элемента списка */
+            border-radius: 5px; /* Закругленные углы */
+            margin: 10px 0; /* Отступы между элементами списка */
+            padding: 10px; /* Внутренние отступы */
+        }
+
+        a {
+            text-decoration: none; /* Убираем подчеркивание у ссылок */
+            color: #e74c3c; /* Цвет ссылки для удаления */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Подчеркивание при наведении на ссылку */
+        }
+
+        .back-link {
+            margin-top: 20px; /* Отступ сверху */
+            color: #3498db; /* Цвет ссылки "Назад" */
+        }
+
+        .back-link:hover {
+            text-decoration: underline; /* Подчеркивание при наведении на ссылку "Назад" */
+        }
+    </style>
 </head>
 <body>
     <h1>Все QR-коды</h1>
@@ -14,6 +63,6 @@
             <li>Нет данных в базе.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'index' %}">Назад</a>
+    <a class="back-link" href="{% url 'index' %}">Назад</a>
 </body>
 </html>

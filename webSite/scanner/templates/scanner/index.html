@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -8,5 +8,60 @@
     <h1>QRWay</h1>
     <a href="{% url 'add_qr_code' %}">Добавить QR-код</a><br>
     <a href="{% url 'show_all_data' %}">Показать все QR-коды</a>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>QRWay</title>
+    <style>
+        body {
+            background-image: url('https://avatars.mds.yandex.net/i?id=c27ff232ed5d5e96d12e247411cf3c28_l-8129946-images-thumbs&n=13'); /* Картинка фона */
+            background-size: cover; /* Занять весь экран */
+            background-position: center; /* Центрировать картинку */
+            color: rgb(0, 0, 0); /* Цвет текста */
+            display: flex; /* Используем flexbox для центрирования */
+            flex-direction: column; /* Вертикальное выравнивание */
+            justify-content: center; /* Центрирование по вертикали */
+            align-items: center; /* Центрирование по горизонтали */
+            height: 100vh; /* Высота на весь экран */
+            margin: 0; /* Убираем отступы */
+        }
+        .content {
+            position: relative; /* Относительное позиционирование для контента */
+            z-index: 1; /* Устанавливаем уровень наложения выше фона */
+        }
+        h1 {
+            margin-bottom: 20px; /* Отступ между заголовком и кнопками */
+            font-size: 48px; /* Увеличиваем размер шрифта заголовка */
+            text-align: center; /* Центрируем текст заголовка */
+        }
+        .button {
+            background-color: transparent; /* Прозрачный фон */
+            color: rgb(0, 0, 0); /* Цвет текста кнопки */
+            border: 2px solid rgb(0, 0, 0); /* Рамка кнопки */
+            border-radius: 5px; /* Закругленные углы */
+            padding: 10px 20px; /* Увеличиваем отступы внутри кнопки */
+            margin: 5px 0; /* Отступы между кнопками */
+            text-decoration: none; /* Убираем подчеркивание */
+            cursor: pointer; /* Указатель при наведении */
+            transition: background-color 0.3s, color 0.3s; /* Плавный переход для фона и цвета */
+        }
+        .button:hover {
+            background-color: rgb(27, 155, 219); /* Фон при наведении */
+            color: black; /* Цвет текста при наведении */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>QRWay</h1>
+        <a href="{% url 'add_qr_code' %}" class="button">Добавить QR-код</a><br><br><br>
+        <a href="{% url 'show_all_data' %}" class="button">Показать все QR-коды</a>
+    </div>
 </body>
 </html>
